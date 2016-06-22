@@ -114,8 +114,8 @@ class Simulator
 		previous_values[c][f] = Random.new.rand(0..1) if f == :a_phase_power_factor ||  f == :b_phase_power_factor || f == :c_phase_power_factor  || f == :total_power_factor
 		previous_values[c][f] = Random.new.rand(45..55) if f == :frequency
 		previous_values[c][f] = Random.new.rand(30..60) if f == :temparature 
-		puts "key:meter.#{c}.#{f}.......value:#{previous_values[c][f]}" 
-		@statsd.timing "meter.#{c}.#{f}", previous_values[c][f] * 100	
+		puts "key:meter_#{c}_#{f}.......value:#{previous_values[c][f]}" 
+		@statsd.gauge "meter_#{c}_#{f}", previous_values[c][f] 	
 	end
 end
 
